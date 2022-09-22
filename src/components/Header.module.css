@@ -1,0 +1,29 @@
+.header {
+  width: 100vw;
+  height: 12.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background: var(--gray-700);
+}
+
+.logo {
+  width: 7.875rem;
+  height: 3rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 2.5rem;
+  color: var(--blue);
+}
+
+.logo span {
+  color: var(--purple-dark);
+}
