@@ -36,7 +36,7 @@ label:before {
 
 .checkbox:checked + label:before {
   background: var(--purple-dark);
-  background-image: url('../assets/Vector.svg');
+  background-image: url("../assets/Vector.svg");
   background-repeat: no-repeat;
   background-position: center;
   border: 2px solid var(--purple-dark);
@@ -78,7 +78,7 @@ label:before {
 
   display: flex;
   align-items: center;
-  
+
   color: var(--gray-400);
   background: transparent;
 }

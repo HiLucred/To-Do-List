@@ -21,7 +21,8 @@
   gap: 0.5rem;
 }
 
-.newTaskField input, button {
+.newTaskField input,
+button {
   border: none;
   border-radius: 0.5rem;
 }

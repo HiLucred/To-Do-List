@@ -1,39 +1,42 @@
-import { Header } from './components/Header'
-import { Task } from './components/Task'
-import { TaskInfo } from './components/TaskInfo';
-import { FaPlusCircle, FaClipboard } from 'react-icons/fa'
-import { FormEvent, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid';
-import styles from './App.module.css'
-import './global.css'
+import { Header } from "./components/Header";
+import { Task } from "./components/Task";
+import { TaskInfo } from "./components/TaskInfo";
+import { FaPlusCircle, FaClipboard } from "react-icons/fa";
+import { FormEvent, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import styles from "./App.module.css";
+import "./global.css";
 
-interface ITaskList {
+interface TaskList {
   content: string;
   isCompleted: boolean;
   id: string;
 }
 
 export function App() {
-  const [tasks, setTasks] = useState<ITaskList[]>([]);
-  const [newTask, setNewTask] = useState('');
+  const [tasks, setTasks] = useState<TaskList[]>([]);
+  const [newTask, setNewTask] = useState("");
 
   const canSubmit = newTask.length === 0;
   const numberOfTasks = tasks.length;
-  const numberOfCompletedTasks = tasks.filter(task => task.isCompleted).length
+  const numberOfCompletedTasks = tasks.filter(
+    (task) => task.isCompleted
+  ).length;
   const containTasks = numberOfTasks === 0;
 
   function handleAddTask(event: FormEvent) {
     event.preventDefault();
 
-    setTasks([...tasks,
-    {
-      content: newTask,
-      isCompleted: false,
-      id: uuidv4()
-    }
-    ])
+    setTasks([
+      ...tasks,
+      {
+        content: newTask,
+        isCompleted: false,
+        id: uuidv4(),
+      },
+    ]);
 
-    setNewTask("")
+    setNewTask("");
   }
 
   function handleDeleteTask(taskToDelete: string) {
@@ -45,17 +48,17 @@ export function App() {
   }
 
   function handleCompletedTask(taskId: string) {
-    const newTasks = tasks.map(task => {
+    const newTasks = tasks.map((task) => {
       if (task.id === taskId) {
         return {
           ...task,
-          isCompleted: !task.isCompleted
-        }
+          isCompleted: !task.isCompleted,
+        };
       }
       return task;
-    })
-    
-    setTasks(newTasks)
+    });
+
+    setTasks(newTasks);
   }
 
   return (
@@ -68,17 +71,15 @@ export function App() {
             type="search"
             placeholder="Adicione uma nova tarefa"
             maxLength={220}
-            onChange={event => setNewTask(event.target.value)}
+            onChange={(event) => setNewTask(event.target.value)}
             value={newTask}
           />
 
           <button type="submit" disabled={canSubmit}>
             Criar
             <FaPlusCircle size={15} />
-
           </button>
         </form>
-
       </div>
 
       <div className={styles.tasksContainer}>
@@ -87,13 +88,19 @@ export function App() {
           completedTasks={numberOfCompletedTasks}
         />
 
-        <div className={containTasks ? styles.emptyTaskContainer : styles.emptyTaskContainerDisabled}>
+        <div
+          className={
+            containTasks
+              ? styles.emptyTaskContainer
+              : styles.emptyTaskContainerDisabled
+          }
+        >
           <FaClipboard size={50} />
 
           <h3>
-            <span>Você ainda não tem tarefas cadastradas</span> Crie tarefas e organize seus itens a fazer
+            <span>Você ainda não tem tarefas cadastradas</span> Crie tarefas e
+            organize seus itens a fazer
           </h3>
-
         </div>
 
         <div className={styles.tasks}>
@@ -107,12 +114,10 @@ export function App() {
                 onDeleteTask={handleDeleteTask}
                 onCompletedTask={handleCompletedTask}
               />
-            )
+            );
           })}
         </div>
-
       </div>
-
     </div>
-  )
+  );
 }

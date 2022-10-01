@@ -1,5 +1,5 @@
-import styles from './Task.module.css'
-import { Trash } from 'phosphor-react'
+import styles from "./Task.module.css";
+import { Trash } from "phosphor-react";
 
 interface ITask {
   id: string;
@@ -9,18 +9,23 @@ interface ITask {
   onCompletedTask: (content: string) => void;
 }
 
-export function Task({ id, content, isCompleted, onDeleteTask, onCompletedTask }: ITask) {
-
+export function Task({
+  id,
+  content,
+  isCompleted,
+  onDeleteTask,
+  onCompletedTask,
+}: ITask) {
   function handleDeleteComment() {
-    onDeleteTask(id)
+    onDeleteTask(id);
   }
 
   function handleCompleteTask() {
-    onCompletedTask(id)
+    onCompletedTask(id);
   }
 
   return (
-    <div className={styles.card} >
+    <div className={styles.card}>
       <input
         className={styles.checkbox}
         id={id}
@@ -34,14 +39,10 @@ export function Task({ id, content, isCompleted, onDeleteTask, onCompletedTask }
           {content}
         </p>
       </label>
-      
-      <button className={styles.deleteButton} onClick={handleDeleteComment}>
-        <Trash
-          size={20}
-          className={styles.trash}
-        />
-      </button>
 
+      <button className={styles.deleteButton} onClick={handleDeleteComment}>
+        <Trash size={20} className={styles.trash} />
+      </button>
     </div>
-  )
+  );
 }
