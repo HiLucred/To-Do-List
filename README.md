@@ -2,7 +2,7 @@
 
 Aplicação desenvolvida no módulo "Ignite" proposto pela RocketSeat.
 
-🛠️ Skils: TypeScript, React, HTML, CSS
+🛠️ Skils: TypeScript, React, Styled Components HTML, CSS
 
 
 ## 📋 Clone o repositório
